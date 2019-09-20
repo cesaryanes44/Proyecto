@@ -117,7 +117,7 @@ namespace Proyecto_de_RH_Reclutamiento.BL
 
             //ASPIRANTES
 
-            string Direccion = @"C:\Users\Kenin\Documents\Proyecto L2\Proyecto Final Terminado\Trabajo Original\Imagenes\usuario-sin-foto.JPG";
+            string Direccion = @"C:\Users\CesarYanes\Desktop\Proyecto\Proyecto\Trabajo Original\Imagenes\usuario-sin-foto.JPG";
 
             var aspirante0 = new Modelos.Aspirantes(0, " ", 0, " ", " ", " ", nivel1, tit1, 0, area1);
 
