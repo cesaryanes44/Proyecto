@@ -18,23 +18,32 @@ namespace Proyecto_de_RH_Reclutamiento
             InitializeComponent();
             
         }
-        public void CargarDatos(FacturaBL facturaBL, AspirantesBL aspirantesBL)
+        public void CargarDatos(FacturaBL facturaBL, AspirantesBL aspirantesBL, CompañiaBL compañiaBL)
         {
             var bindingSource = new BindingSource();
+
             bindingSource.DataSource =
-                from F in facturaBL.ListadeFacturas
+                from F in facturaBL.ListadeFacturas 
                 select new
                 {
                     Id = F.Id,
                     Fecha = F.Fecha,
-                    Compania = F.Compañia,
+                    Compañia = compañiaBL.ListaDeCompañia.FirstOrDefault(r => r.Id == F.CompañiaId).Descripcion,
                     Aspirante = F.CantAspirantes,
                     Subtotal = F.SubTotal,
                     Impuesto = F.Impuesto,
                     Total = F.Total,
-                    Activo = F.Activo
-                    
+                    Activo = F.Activo                    
                 };
+
+ /*           bindingSource.DataSource = from D in facturaBL.ListadeDetalleFacturas select new
+                {
+                    Id = D.Id,
+                    Aspirante = aspirantesBL.ListaDeContratados.FirstOrDefault(r => r.Id == D.AspiranteId).Nombre,
+                    
+                };*/
+
+
 
             var reporte = new ReporteFactura();
             reporte.SetDataSource(bindingSource);

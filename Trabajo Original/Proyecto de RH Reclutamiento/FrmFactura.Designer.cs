@@ -31,11 +31,11 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label activoLabel;
             System.Windows.Forms.Label cantAspirantesLabel;
-            System.Windows.Forms.Label compañiaLabel;
             System.Windows.Forms.Label fechaLabel;
             System.Windows.Forms.Label idLabel;
             System.Windows.Forms.Label subTotalLabel;
             System.Windows.Forms.Label totalLabel;
+            System.Windows.Forms.Label compañiaLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmFactura));
             this.listadeFacturasBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
@@ -53,7 +53,6 @@
             this.listadeFacturasBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.activoCheckBox = new System.Windows.Forms.CheckBox();
             this.cantAspirantesTextBox = new System.Windows.Forms.TextBox();
-            this.compañiaTextBox = new System.Windows.Forms.TextBox();
             this.fechaDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.idTextBox = new System.Windows.Forms.TextBox();
             this.subTotalTextBox = new System.Windows.Forms.TextBox();
@@ -73,13 +72,17 @@
             this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataSet1 = new Proyecto_de_RH_Reclutamiento.DataSet1();
+            this.facturaBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.listaDeCompañiaBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             activoLabel = new System.Windows.Forms.Label();
             cantAspirantesLabel = new System.Windows.Forms.Label();
-            compañiaLabel = new System.Windows.Forms.Label();
             fechaLabel = new System.Windows.Forms.Label();
             idLabel = new System.Windows.Forms.Label();
             subTotalLabel = new System.Windows.Forms.Label();
             totalLabel = new System.Windows.Forms.Label();
+            compañiaLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.listadeFacturasBindingNavigator)).BeginInit();
             this.listadeFacturasBindingNavigator.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listadeFacturasBindingSource)).BeginInit();
@@ -88,6 +91,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.listaDeAspirantesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.listaDeAreasBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.listaDePuestosBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.facturaBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listaDeCompañiaBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // activoLabel
@@ -107,15 +113,6 @@
             cantAspirantesLabel.Size = new System.Drawing.Size(87, 13);
             cantAspirantesLabel.TabIndex = 3;
             cantAspirantesLabel.Text = "Cant. Aspirantes:";
-            // 
-            // compañiaLabel
-            // 
-            compañiaLabel.AutoSize = true;
-            compañiaLabel.Location = new System.Drawing.Point(26, 67);
-            compañiaLabel.Name = "compañiaLabel";
-            compañiaLabel.Size = new System.Drawing.Size(57, 13);
-            compañiaLabel.TabIndex = 5;
-            compañiaLabel.Text = "Compañia:";
             // 
             // fechaLabel
             // 
@@ -152,6 +149,15 @@
             totalLabel.Size = new System.Drawing.Size(152, 13);
             totalLabel.TabIndex = 15;
             totalLabel.Text = "Total de Comisiones Completo:";
+            // 
+            // compañiaLabel
+            // 
+            compañiaLabel.AutoSize = true;
+            compañiaLabel.Location = new System.Drawing.Point(26, 66);
+            compañiaLabel.Name = "compañiaLabel";
+            compañiaLabel.Size = new System.Drawing.Size(57, 13);
+            compañiaLabel.TabIndex = 16;
+            compañiaLabel.Text = "Compañia:";
             // 
             // listadeFacturasBindingNavigator
             // 
@@ -287,7 +293,7 @@
             this.activoCheckBox.Location = new System.Drawing.Point(116, 117);
             this.activoCheckBox.Name = "activoCheckBox";
             this.activoCheckBox.Size = new System.Drawing.Size(200, 24);
-            this.activoCheckBox.TabIndex = 2;
+            this.activoCheckBox.TabIndex = 3;
             this.activoCheckBox.UseVisualStyleBackColor = true;
             // 
             // cantAspirantesTextBox
@@ -298,21 +304,14 @@
             this.cantAspirantesTextBox.Size = new System.Drawing.Size(144, 20);
             this.cantAspirantesTextBox.TabIndex = 4;
             // 
-            // compañiaTextBox
-            // 
-            this.compañiaTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.listadeFacturasBindingSource, "Compañia", true));
-            this.compañiaTextBox.Location = new System.Drawing.Point(116, 64);
-            this.compañiaTextBox.Name = "compañiaTextBox";
-            this.compañiaTextBox.Size = new System.Drawing.Size(200, 20);
-            this.compañiaTextBox.TabIndex = 6;
-            // 
             // fechaDateTimePicker
             // 
             this.fechaDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.listadeFacturasBindingSource, "Fecha", true));
             this.fechaDateTimePicker.Location = new System.Drawing.Point(116, 90);
             this.fechaDateTimePicker.Name = "fechaDateTimePicker";
             this.fechaDateTimePicker.Size = new System.Drawing.Size(200, 20);
-            this.fechaDateTimePicker.TabIndex = 8;
+            this.fechaDateTimePicker.TabIndex = 2;
+            this.fechaDateTimePicker.ValueChanged += new System.EventHandler(this.fechaDateTimePicker_ValueChanged);
             // 
             // idTextBox
             // 
@@ -320,7 +319,7 @@
             this.idTextBox.Location = new System.Drawing.Point(116, 38);
             this.idTextBox.Name = "idTextBox";
             this.idTextBox.Size = new System.Drawing.Size(52, 20);
-            this.idTextBox.TabIndex = 10;
+            this.idTextBox.TabIndex = 0;
             // 
             // subTotalTextBox
             // 
@@ -361,7 +360,7 @@
             this.facturaDetalleDataGridView.Location = new System.Drawing.Point(29, 147);
             this.facturaDetalleDataGridView.Name = "facturaDetalleDataGridView";
             this.facturaDetalleDataGridView.Size = new System.Drawing.Size(1159, 220);
-            this.facturaDetalleDataGridView.TabIndex = 17;
+            this.facturaDetalleDataGridView.TabIndex = 4;
             this.facturaDetalleDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.facturaDetalleDataGridView_CellContentClick_1);
             this.facturaDetalleDataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.facturaDetalleDataGridView_CellEndEdit);
             // 
@@ -461,18 +460,45 @@
             this.dataGridViewTextBoxColumn8.HeaderText = "Cantidad";
             this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
             // 
+            // dataSet1
+            // 
+            this.dataSet1.DataSetName = "DataSet1";
+            this.dataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // facturaBindingSource
+            // 
+            this.facturaBindingSource.DataMember = "Factura";
+            this.facturaBindingSource.DataSource = this.dataSet1;
+            // 
+            // listaDeCompañiaBindingSource
+            // 
+            this.listaDeCompañiaBindingSource.DataSource = typeof(Proyecto_de_RH_Reclutamiento.Modelos.Compañia);
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.listadeFacturasBindingSource, "CompañiaId", true));
+            this.comboBox1.DataSource = this.listaDeCompañiaBindingSource;
+            this.comboBox1.DisplayMember = "Descripcion";
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(116, 63);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(200, 21);
+            this.comboBox1.TabIndex = 17;
+            this.comboBox1.ValueMember = "Id";
+            // 
             // FrmFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1221, 498);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(compañiaLabel);
             this.Controls.Add(this.facturaDetalleDataGridView);
             this.Controls.Add(activoLabel);
             this.Controls.Add(this.activoCheckBox);
             this.Controls.Add(cantAspirantesLabel);
             this.Controls.Add(this.cantAspirantesTextBox);
-            this.Controls.Add(compañiaLabel);
-            this.Controls.Add(this.compañiaTextBox);
             this.Controls.Add(fechaLabel);
             this.Controls.Add(this.fechaDateTimePicker);
             this.Controls.Add(idLabel);
@@ -495,6 +521,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.listaDeAspirantesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.listaDeAreasBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.listaDePuestosBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.facturaBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listaDeCompañiaBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -518,7 +547,6 @@
         private System.Windows.Forms.ToolStripButton listadeFacturasBindingNavigatorSaveItem;
         private System.Windows.Forms.CheckBox activoCheckBox;
         private System.Windows.Forms.TextBox cantAspirantesTextBox;
-        private System.Windows.Forms.TextBox compañiaTextBox;
         private System.Windows.Forms.DateTimePicker fechaDateTimePicker;
         private System.Windows.Forms.TextBox idTextBox;
         private System.Windows.Forms.TextBox subTotalTextBox;
@@ -538,5 +566,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
+        private DataSet1 dataSet1;
+        private System.Windows.Forms.BindingSource facturaBindingSource;
+        private System.Windows.Forms.BindingSource listaDeCompañiaBindingSource;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

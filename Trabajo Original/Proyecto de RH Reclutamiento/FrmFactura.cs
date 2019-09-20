@@ -20,7 +20,7 @@ namespace Proyecto_de_RH_Reclutamiento
             InitializeComponent();          
         }
 
-        public void cargarDatos(FacturaBL facturaBL, AspirantesBL aspirantesBL, PuestoBL puestoBL, AreaBL areaBL)
+        public void cargarDatos(FacturaBL facturaBL, AspirantesBL aspirantesBL, PuestoBL puestoBL, AreaBL areaBL, CompañiaBL compañiaBL)
         {
             _facturaBL = facturaBL;
 
@@ -28,6 +28,8 @@ namespace Proyecto_de_RH_Reclutamiento
             listaDeAspirantesBindingSource.DataSource = aspirantesBL.ListaDeContratados;
             listaDePuestosBindingSource.DataSource = puestoBL.ListaDePuestos;
             listaDeAreasBindingSource.DataSource = areaBL.ListaDeAreas;
+            listaDeCompañiaBindingSource.DataSource = compañiaBL.ListaDeCompañia;
+                                                      
         }
 
         private void FrmFactura_Load(object sender, EventArgs e)
@@ -50,6 +52,11 @@ namespace Proyecto_de_RH_Reclutamiento
         }
 
         private void facturaDetalleDataGridView_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void fechaDateTimePicker_ValueChanged(object sender, EventArgs e)
         {
 
         }

@@ -13,7 +13,8 @@ namespace Proyecto_de_RH_Reclutamiento.Modelos
         public int Id { get; set; }
         public DateTime Fecha { get; set; }
 
-        public string Compañia { get; set; }
+        public Compañia Compañia { get; set; }
+        public int CompañiaId { get; set; }
 
         public double CantAspirantes { get; set; }
         public double SubTotal { get; set; }

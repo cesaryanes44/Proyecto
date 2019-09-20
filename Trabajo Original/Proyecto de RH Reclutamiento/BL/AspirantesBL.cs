@@ -17,8 +17,6 @@ namespace Proyecto_de_RH_Reclutamiento.BL
         public BindingList<Modelos.Aspirantes> ListaDeContratados { get; set; }
         public BindingList<Modelos.Aspirantes> ListaDeBuscar { get; set; }
 
-
-
         public AspirantesBL()
         {
             ListaDeAspirantes = new BindingList<Modelos.Aspirantes>();

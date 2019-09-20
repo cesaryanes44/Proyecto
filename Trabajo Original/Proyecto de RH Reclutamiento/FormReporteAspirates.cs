@@ -40,5 +40,9 @@ namespace Proyecto_de_RH_Reclutamiento
             crystalReportViewer1.RefreshReport();
         }
 
+        private void crystalReportViewer1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

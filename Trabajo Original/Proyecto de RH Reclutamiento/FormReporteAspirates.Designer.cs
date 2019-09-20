@@ -43,6 +43,7 @@
             this.crystalReportViewer1.Size = new System.Drawing.Size(847, 506);
             this.crystalReportViewer1.TabIndex = 0;
             this.crystalReportViewer1.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
+            this.crystalReportViewer1.Load += new System.EventHandler(this.crystalReportViewer1_Load);
             // 
             // FormReporteAspirates
             // 

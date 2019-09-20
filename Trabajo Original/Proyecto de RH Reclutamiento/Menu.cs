@@ -20,6 +20,7 @@ namespace Proyecto_de_RH_Reclutamiento
         NivelInglesBL _nivelInglesBL;
         UsuariosBL _usuariosBL;
         FacturaBL _facturaBL;
+        CompañiaBL _compañiaBL;
 
         public FrmMenu()
         {
@@ -31,6 +32,7 @@ namespace Proyecto_de_RH_Reclutamiento
             _nivelInglesBL = new NivelInglesBL();
             _usuariosBL = new UsuariosBL();
             _facturaBL = new FacturaBL();
+            _compañiaBL = new CompañiaBL();
 
         }
 
@@ -173,7 +175,7 @@ namespace Proyecto_de_RH_Reclutamiento
         private void reporteTotalesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var formReporteTotales = new FormReporteTotales();
-            formReporteTotales.CargarDatos(_facturaBL, _aspirantesBL);
+            formReporteTotales.CargarDatos(_facturaBL, _aspirantesBL, _compañiaBL);
             formReporteTotales.MdiParent = this;
 
             formReporteTotales.Show();
@@ -184,8 +186,10 @@ namespace Proyecto_de_RH_Reclutamiento
             var frmFactura = new FrmFactura();
             frmFactura.MdiParent = this;
 
-            frmFactura.cargarDatos(_facturaBL, _aspirantesBL, _puestoBL, _areaBL);
+            frmFactura.cargarDatos(_facturaBL, _aspirantesBL, _puestoBL, _areaBL, _compañiaBL);
             frmFactura.Show();
         }
+
+
     }
 }

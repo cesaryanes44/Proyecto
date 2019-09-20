@@ -18,7 +18,7 @@ namespace Proyecto_de_RH_Reclutamiento
         public FrmContratados()
         {
             InitializeComponent();
-         
+            
         }
         public void cargarDatos(AspirantesBL aspirantesBL)
         {
